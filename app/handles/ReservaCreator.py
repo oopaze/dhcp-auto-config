@@ -47,16 +47,3 @@ class ReservaCreator:
         is_confirmed = input(f"{reserva_as_str}\nS/N: ").lower() == "s"
 
         return is_confirmed
-
-    def values_as_csv(self, values: List[Any]):
-        string_values = '\n'
-        values_items = values.items()
-
-        for idx, (_, value) in enumerate(values_items):
-            string_values += value
-
-            is_last_value = idx == len(values_items) - 1
-            if not is_last_value:
-                string_values += ','
-
-        return string_values

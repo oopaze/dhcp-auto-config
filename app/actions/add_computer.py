@@ -1,6 +1,8 @@
 from app import OUTPUT_SUCCESS_TEMPLATE
+
 from app.handles.AddressFileHandler import AddressFileHandler
 from app.handles.ReservaCreator import ReservaCreator
+from app.handles.CSVHandle import dictToCSV
 
 FILENAME = 'fixtures/RESERVAS.txt'
 FIELDS = [
@@ -14,7 +16,7 @@ def add_computer():
     reservas_handler = ReservaCreator(FIELDS)
 
     reserva = reservas_handler.get_fields()
-    reserva_as_str = reservas_handler.values_as_csv(reserva)
+    reserva_as_str = dictToCSV(reserva)
 
     address_file_handler = AddressFileHandler(FILENAME)
     address_file_handler.add_line(reserva_as_str)
