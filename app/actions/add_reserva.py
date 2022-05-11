@@ -7,7 +7,7 @@ from app.handles.CSVHandle import dictToCSV
 FILENAME = 'fixtures/RESERVAS.txt'
 
 
-def add_computer():
+def add_reserva():
     reservas_handler = ReservaCreator()
 
     reserva = reservas_handler.get_fields()
