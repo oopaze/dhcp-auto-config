@@ -6,13 +6,8 @@ class DHCPHandler:
     DHCP_FILEPATH = "/etc/dhcp/dhcpd.conf"
 
     def get_dhcp_conf(self):
-        try:
-            file_handler = FileHandler(self.DHCP_FILEPATH)
-            dhcp_file_content = file_handler.get_content(as_str=True)
-
-        except IndexError:
-            ...
-
+        file_handler = FileHandler(self.DHCP_FILEPATH)
+        dhcp_file_content = file_handler.get_content(as_str=True)
         return dhcp_file_content
 
     def create_backup_file(self):

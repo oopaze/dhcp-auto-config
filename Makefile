@@ -1,2 +1,2 @@
 run:
-	python3 run.py
+	sudo python3 run.py

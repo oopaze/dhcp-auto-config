@@ -4,6 +4,7 @@ from app.implementations.menu import Menu
 from app.implementations.menu_option import MenuOption
 
 OUTPUT_SUCCESS_TEMPLATE = "\033[92m{content}\033[0m"
+OUTPUT_ERROR_TEMPLATE = "\033[91m{content}\033[0m"
 
 
 class App:
