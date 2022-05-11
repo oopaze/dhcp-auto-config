@@ -1,7 +1,6 @@
-from turtle import st
 from typing import List, TypedDict
 
-from .AddressFileHandler import AddressFileHandler
+from .FileHandler import FileHandler
 
 
 class AddressContract(TypedDict):
@@ -10,7 +9,7 @@ class AddressContract(TypedDict):
     ip_address: str
 
 
-class ParserAddress(AddressFileHandler):
+class ParserAddress(FileHandler):
     def parser(self) -> List[AddressContract]:
         content = self.get_content()
 

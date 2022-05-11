@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Union
 
 
-class AddressFileHandler:
+class FileHandler:
     READ_MODE = "r"
     APPEND_MODE = "a"
+    WRITE_MODE = "w"
 
     _filename: str = None
 
@@ -18,11 +19,17 @@ class AddressFileHandler:
         with open(self.filename, self.APPEND_MODE) as file:
             file.write(line)
 
-        return True
+    def create_file(filepath: str, content):
+        with open(filepath, FileHandler.WRITE_MODE) as file:
+            file.write(content)
+            file.close
 
-    def get_content(self) -> List[str]:
+    def get_content(self, as_str: bool = False) -> Union[List[str], str]:
         content = None
         with open(self.filename, self.READ_MODE) as file:
-            content = file.readlines()
+            if as_str:
+                content = file.read()
+            else:
+                content = file.readlines()
 
         return content
