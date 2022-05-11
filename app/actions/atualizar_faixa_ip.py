@@ -1,0 +1,3 @@
+def atualizar_faixa_ip():
+    print('Atualizando faixa de IP')
+    ...
