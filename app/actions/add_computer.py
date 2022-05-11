@@ -5,15 +5,10 @@ from app.handles.ReservaCreator import ReservaCreator
 from app.handles.CSVHandle import dictToCSV
 
 FILENAME = 'fixtures/RESERVAS.txt'
-FIELDS = [
-    {"name": "Nome", "key": "name"},
-    {"name": "endereço MAC", "key": "MAC"},
-    {"name": "endereço de IP", "key": "IP"},
-]
 
 
 def add_computer():
-    reservas_handler = ReservaCreator(FIELDS)
+    reservas_handler = ReservaCreator()
 
     reserva = reservas_handler.get_fields()
     reserva_as_str = dictToCSV(reserva)

@@ -38,7 +38,7 @@ class App:
             action_message = action_selected()
 
             if action_message:
-                print(action_message)
+                print(f"\n{action_message}")
 
             is_app_on = self.running == self.ON
 

@@ -1,17 +1,17 @@
-from typing import Any, List
-
-
 class ReservaCreator:
-    _fields = []
-    fields_length = len(_fields)
-    values = {}
+    fields = [
+        {"name": "Nome", "key": "name"},
+        {"name": "endereço MAC", "key": "MAC"},
+        {"name": "endereço de IP", "key": "IP"},
+    ]
+    fields_length = len(fields)
+    values = {"name": None, "MAC": None, "IP": None}
 
-    def __init__(self, fields):
-        self._fields = fields
+    RESERVA_TEMPLATE = 'Nome={nome} | MAC={mac} | IP={ip}'
 
-    @property
-    def fields(self):
-        return self._fields
+    def get_field(self, name: str, key: str):
+        value = input(f"Digite o {name}: ")
+        self.values[key] = value
 
     def get_fields(self):
         is_validated = False
@@ -29,21 +29,13 @@ class ReservaCreator:
 
         return self.values
 
-    def get_field(self, name: str, key: str):
-        value = input(f"Digite o {name}: ")
-        self.values[key] = value
-
     def confirm_fields(self):
-        reserva_as_str = ""
+        name = self.values["name"]
+        mac = self.values["MAC"]
+        ip = self.values["IP"]
 
-        for idx, (_, value) in enumerate(self.values.items()):
-            field = self.fields[idx]
-            reserva_as_str += f"{field['name']}={value}"
+        reserva = self.RESERVA_TEMPLATE.format(nome=name, mac=mac, ip=ip)
 
-            is_last = idx == self.fields_length - 1
-            if not is_last:
-                reserva_as_str += " | "
-
-        is_confirmed = input(f"{reserva_as_str}\nS/N: ").lower() == "s"
+        is_confirmed = input(f"{reserva}\nS/N: ").lower() == "s"
 
         return is_confirmed
