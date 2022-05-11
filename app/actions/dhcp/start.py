@@ -4,15 +4,17 @@ from app.handles.DHCPHandler import DHCPHandler
 
 
 def start():
-    try:
-        dhcp_handler = DHCPHandler()
+    dhcp_handler = DHCPHandler()
 
+    try:
         print("Criando backup do arquivo atual do DHCP")
         dhcp_handler.create_backup_file()
 
         print("Gerando novo arquivo de configuração DHCP")
+        hosts = dhcp_handler.get_hosts_from_reservas()
 
         print("Salvando configuração")
+        dhcp_handler.create_dhcp_conf_file(hosts)
 
         print("Startando DHCP")
         os.system("sudo /etc/init.d/isc-dhcp-server start")

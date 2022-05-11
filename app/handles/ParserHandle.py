@@ -22,7 +22,7 @@ class ParserAddress(FileHandler):
                 {
                     'computer_name': computer_name,
                     'mac_address': mac_address,
-                    'ip_address': ip_address,
+                    'ip_address': ip_address.replace("\n", ""),
                 }
             )
 
