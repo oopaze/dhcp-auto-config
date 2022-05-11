@@ -1,5 +1,6 @@
 from app import App
-from app.menu import MenuOption
+
+from app.implementations.menu_option import MenuOption
 
 from app.actions.atualizar_faixa_ip import atualizar_faixa_ip
 from app.actions.dhcp.restart import restart

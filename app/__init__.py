@@ -1,6 +1,7 @@
 from typing import List
 
-from app.menu import Menu, MenuOption
+from app.implementations.menu import Menu
+from app.implementations.menu_option import MenuOption
 
 OUTPUT_SUCCESS_TEMPLATE = "\033[92m{content}\033[0m"
 
