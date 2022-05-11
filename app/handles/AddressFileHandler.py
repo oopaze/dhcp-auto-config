@@ -1,4 +1,7 @@
-class ComputerHandle:
+from typing import List
+
+
+class AddressFileHandler:
     READ_MODE = "r"
     APPEND_MODE = "a"
 
@@ -17,22 +20,9 @@ class ComputerHandle:
 
         return True
 
-    def parser(self):
+    def get_content(self) -> List[str]:
         content = None
         with open(self.filename, self.READ_MODE) as file:
             content = file.readlines()
 
-        computers = []
-
-        for computer in content:
-            computer_name, mac_address, ip_address = computer.split(',')
-
-            computers.append(
-                {
-                    'computer_name': computer_name,
-                    'mac_address': mac_address,
-                    'ip_address': ip_address,
-                }
-            )
-
-        return computers
+        return content

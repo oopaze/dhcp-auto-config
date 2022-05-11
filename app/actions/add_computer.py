@@ -1,12 +1,22 @@
-from app.file_handles.ComputerHandle import ComputerHandle
+from app import OUTPUT_SUCCESS_TEMPLATE
+from app.handles.AddressFileHandler import AddressFileHandler
+from app.handles.ReservaCreator import ReservaCreator
 
-FILENAME = 'fixtures/pc-list.csv'
-NEW_COMPUTER_TEMPLATE = '\n{name},{mac},{ip}'
+FILENAME = 'fixtures/RESERVAS.txt'
+FIELDS = [
+    {"name": "Nome", "key": "name"},
+    {"name": "endereço MAC", "key": "MAC"},
+    {"name": "endereço de IP", "key": "IP"},
+]
 
 
 def add_computer():
-    print('Adicionando máquina')
-    computer_handle_bundle = ComputerHandle(FILENAME)
+    reservas_handler = ReservaCreator(FIELDS)
 
-    new_computer = NEW_COMPUTER_TEMPLATE.format(name='foo', mac='01', ip='02')
-    computer_handle_bundle.add_line(new_computer)
+    reserva = reservas_handler.get_fields()
+    reserva_as_str = reservas_handler.values_as_csv(reserva)
+
+    address_file_handler = AddressFileHandler(FILENAME)
+    address_file_handler.add_line(reserva_as_str)
+
+    return OUTPUT_SUCCESS_TEMPLATE.format(content="Reserva Adicionada com sucesso")

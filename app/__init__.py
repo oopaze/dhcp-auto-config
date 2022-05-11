@@ -2,6 +2,8 @@ from typing import List
 
 from app.menu import Menu, MenuOption
 
+OUTPUT_SUCCESS_TEMPLATE = "\033[92m{content}\033[0m"
+
 
 class App:
     ON = 'on'
@@ -20,6 +22,7 @@ class App:
         self._running = self.OFF
 
     def start(self):
+        print("Iniciando aplicação")
         self._running = self.ON
 
     def run(self):
@@ -27,14 +30,16 @@ class App:
         is_app_on = self.running == self.ON
 
         while is_app_on:
-            self.menu.show()
+            self.menu.show(brakeline=True)
 
             option = input('Option: ')
             action_selected = self.menu.get_action(option)
             print()
-            action_selected()
+            action_message = action_selected()
+
+            if action_message:
+                print(action_message)
 
             is_app_on = self.running == self.ON
-            print('\n')
 
         print("Encerrando aplicação...")

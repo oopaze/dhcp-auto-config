@@ -1,19 +1,22 @@
-from app.file_handles.ComputerHandle import ComputerHandle
+from app.handles.ParserHandle import ParserAddress
 
-FILENAME = 'fixtures/pc-list.csv'
-COMPUTER_TEMPLATE = 'Nome={nome} | MAC={mac} | IP={ip}'
+FILENAME = 'fixtures/RESERVAS.txt'
+COMPUTER_TEMPLATE = '{idx} - Nome={nome} | MAC={mac} | IP={ip}'
 
 
 def show_reservas():
     print('Reservas: ')
-    computer_handle_bundle = ComputerHandle(FILENAME)
-    computers = computer_handle_bundle.parser()
+    parser = ParserAddress(FILENAME)
+    computers = parser.parser()
 
-    for computer in computers:
+    for idx, computer in enumerate(computers):
         computer_str = COMPUTER_TEMPLATE.format(
+            idx=idx + 1,
             nome=computer['computer_name'],
             mac=computer['mac_address'],
             ip=computer['ip_address'],
         )
 
         print(computer_str, end='')
+
+    return ""

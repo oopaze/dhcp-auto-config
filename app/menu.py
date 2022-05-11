@@ -36,13 +36,16 @@ class Menu:
         try:
             idx = int(idx)
             return self.menu_options[idx].action
-        except (TypeError, IndexError):
+        except (TypeError, IndexError, ValueError):
             return self.error_action
 
     def error_action(self):
-        print('Opção Inválida')
+        return '\033[91mOpção Inválida\033[0m'
 
-    def show(self):
+    def show(self, brakeline: bool = False):
+        if brakeline:
+            print()
+
         for idx, menu in enumerate(self.menu_options):
             menu_option = self.TEMPLATE_MENU.format(
                 number=idx, menu_text=menu.menu_text
