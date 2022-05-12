@@ -1,10 +1,4 @@
 class ReservaCreator:
-    fields = [
-        {"name": "Nome", "key": "name"},
-        {"name": "endereço MAC", "key": "MAC"},
-        {"name": "endereço de IP", "key": "IP"},
-    ]
-    fields_length = len(fields)
     values = {"name": None, "MAC": None, "IP": None}
 
     RESERVA_TEMPLATE = 'Nome={nome} | MAC={mac} | IP={ip}'
@@ -17,11 +11,9 @@ class ReservaCreator:
         is_validated = False
 
         while not (is_validated):
-            for field in self.fields:
-                name = field['name']
-                key = field['key']
-
-                self.get_field(name, key)
+            self.get_field("Nome", "name")
+            self.get_field("endereço MAC", "MAC")
+            self.get_field("endereço de IP", "IP")
 
             print("\nConfirma Reserva?")
             if self.confirm_fields():
