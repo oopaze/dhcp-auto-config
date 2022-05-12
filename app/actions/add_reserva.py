@@ -3,7 +3,7 @@ from app.handles.DHCPHandler import DHCPHandler
 
 from app.handles.FileHandler import FileHandler
 from app.handles.ReservaCreator import ReservaCreator
-from app.handles.CSVHandle import listToCSV
+from app.handles.CSVHandle import CSVHandle
 
 
 def add_reserva():
@@ -15,7 +15,7 @@ def add_reserva():
     reservas = dhcp_handler.get_reservas_from_dhcp_conf()
     reservas.append(reserva)
 
-    reservas_as_str = listToCSV(reservas)
+    reservas_as_str = CSVHandle.list_to_csv(reservas)
 
     FileHandler.create_file(RESERVAS_FILEPATH, reservas_as_str)
 
