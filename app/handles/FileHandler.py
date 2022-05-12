@@ -1,5 +1,7 @@
 from typing import List, Union
 
+from app.utils.get_today_date import get_today_date
+
 
 class FileHandler:
     READ_MODE = "r"
@@ -23,6 +25,11 @@ class FileHandler:
         with open(filepath, FileHandler.WRITE_MODE) as file:
             file.write(content)
             file.close
+
+    def copy_file(filepath: str, new_filepath: str):
+        with open(filepath, FileHandler.READ_MODE) as file:
+            with open(new_filepath, FileHandler.WRITE_MODE) as new_file:
+                new_file.write(file.read())
 
     def get_content(self, as_str: bool = False) -> Union[List[str], str]:
         content = None

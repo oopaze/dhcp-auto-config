@@ -60,16 +60,13 @@ class DHCPHandler:
             ip=reserva["ip_address"],
         )
 
-    def create_dhcp_conf_file(self, content: str, filepath: str = None):
+    def create_dhcp_conf_file(self, content: str):
         requied_dhcp_handler = FileHandler(DHCP_REQUIRED_CONFIG_FILEPATH)
         required_dhcp_conf = requied_dhcp_handler.get_content(as_str=True)
 
         content = required_dhcp_conf + content
-        if filepath is None:
-            moment = get_today_date()
-            filepath = f"fixtures/dhcp.conf/dhcp-{moment}.conf"
 
-        FileHandler.create_file(filepath, content)
+        FileHandler.create_file(DHCP_FILEPATH, content)
 
     def create_backup_file(self):
         moment = get_today_date()
@@ -77,5 +74,5 @@ class DHCPHandler:
         filename = f"backup-{moment}.conf"
 
         FileHandler.create_file(
-            filepath=f"fixtures/backups/{filename}", content=content
+            filepath=f"fixtures/backups/dhcpd.conf/{filename}", content=content
         )
