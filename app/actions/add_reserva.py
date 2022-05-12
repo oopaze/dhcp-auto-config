@@ -12,7 +12,7 @@ def add_reserva():
 
     reserva = reservas_handler.generate_reserva()
 
-    reservas = dhcp_handler.get_hosts_from_conf()
+    reservas = dhcp_handler.get_reservas_from_dhcp_conf()
     reservas.append(reserva)
 
     reservas_as_str = listToCSV(reservas)

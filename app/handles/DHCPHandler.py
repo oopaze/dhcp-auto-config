@@ -38,7 +38,7 @@ class DHCPHandler:
             ip=reserva["ip_address"],
         )
 
-    def get_hosts_from_conf(self):
+    def get_reservas_from_dhcp_conf(self):
         content = self.get_dhcp_conf(as_str=False)
         formated_hosts = []
 
