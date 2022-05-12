@@ -3,7 +3,7 @@ from typing import List
 from app import DHCP_FILEPATH, DHCP_REQUIRED_CONFIG_FILEPATH, RESERVAS_FILEPATH
 from app.handles.FileHandler import FileHandler
 from app.handles.ParserHandle import AddressContract, ParserAddress
-from app.utils.get_today_moment import get_moment
+from app.utils.get_moment import get_moment
 
 HOST_TEMPLATE = """
 host {name} {{

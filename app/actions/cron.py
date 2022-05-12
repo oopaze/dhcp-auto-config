@@ -2,7 +2,7 @@ from app import OUTPUT_SUCCESS_TEMPLATE, RESERVAS_FILEPATH
 from app.handles.CSVHandle import listToCSV
 from app.handles.DHCPHandler import DHCPHandler
 from app.handles.FileHandler import FileHandler
-from app.utils.get_today_moment import get_moment
+from app.utils.get_moment import get_moment
 
 
 def cron_execution():
