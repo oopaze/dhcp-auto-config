@@ -1,3 +1,6 @@
+from os import environ as env
+from typing import List
+
 from app.handles.FileHandler import FileHandler
 from app.handles.ParserHandle import AddressContract, ParserAddress
 from app.utils.get_today_date import get_today_date
@@ -6,19 +9,17 @@ HOST_TEMPLATE = """
 host {name} {{
     hardware ethernet    {mac};
     fixed-address        {ip};
-    max-lease-time       84600;
 }}
 """
 
 
 class DHCPHandler:
-    DHCP_FILEPATH = "/etc/dhcp/dhcpd.conf"
-    RESERVAS_FILEPATH = "fixtures/RESERVAS.txt"
+    DHCP_FILEPATH = env.get("DHCP_FILEPATH", "fixtures/dhcpd.conf")
+    RESERVAS_FILEPATH = env.get("RESERVAS_FILEPATH", "fixtures/RESERVAS.txt")
 
-    def get_dhcp_conf(self):
+    def get_dhcp_conf(self, as_str: bool = True):
         file_handler = FileHandler(self.DHCP_FILEPATH)
-        dhcp_file_content = file_handler.get_content(as_str=True)
-        return dhcp_file_content
+        return file_handler.get_content(as_str=as_str)
 
     def get_reservas_conf(self):
         file_handler = ParserAddress(self.RESERVAS_FILEPATH)
@@ -32,6 +33,28 @@ class DHCPHandler:
             content += self.tranform_reserva_into_host(reserva)
 
         return content
+
+    def get_hosts_from_conf(self):
+        content = self.get_dhcp_conf(as_str=False)
+        formated_hosts = []
+
+        for idx, line in enumerate(content):
+            if line.strip().startswith("host"):
+                host = content[idx : idx + 3]
+                formated_hosts.append(self.format_host(host))
+
+        return formated_hosts
+
+    def format_host(self, host: List[str]) -> AddressContract:
+        computer_name = host[0].split(" ")[1]
+        mac_address = host[1].split("    ")[2].replace(";\n", "")
+        ip_address = host[2].split("        ")[1].replace(";\n", "")
+
+        return {
+            "computer_name": computer_name,
+            "mac_address": mac_address,
+            "ip_address": ip_address,
+        }
 
     def tranform_reserva_into_host(self, reserva: AddressContract):
         return HOST_TEMPLATE.format(
