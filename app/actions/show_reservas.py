@@ -17,6 +17,6 @@ def show_reservas():
             ip=reserva['ip_address'],
         )
 
-        print(reserva_str, end='')
+        print(reserva_str, end='\n')
 
     return ""
