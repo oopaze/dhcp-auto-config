@@ -1,4 +1,7 @@
+from argparse import ArgumentParser
+
 from app import App
+from app.actions.cron import cron_execution
 
 from app.implementations.menu_option import MenuOption
 
@@ -19,6 +22,12 @@ menu_options = [
 ]
 
 if __name__ == '__main__':
-    app = App(menu_options)
+    parser = ArgumentParser(description='DHCP auto config')
+    parser.add_argument("--cron", type=bool, default=False)
+    args = parser.parse_args()
 
-    app.run()
+    if args.cron:
+        cron_execution()
+    else:
+        app = App(menu_options)
+        app.run()
