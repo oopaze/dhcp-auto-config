@@ -13,12 +13,12 @@ class ParserAddress(FileHandler):
     def parser(self) -> List[AddressContract]:
         content = self.get_content()
 
-        computers = []
+        reservas = []
 
-        for computer in content:
-            computer_name, mac_address, ip_address = computer.split(',')
+        for reserva in content:
+            computer_name, mac_address, ip_address = reserva.split(',')
 
-            computers.append(
+            reservas.append(
                 {
                     'computer_name': computer_name,
                     'mac_address': mac_address,
@@ -26,4 +26,4 @@ class ParserAddress(FileHandler):
                 }
             )
 
-        return computers
+        return reservas
