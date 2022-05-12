@@ -23,7 +23,7 @@ class DHCPHandler:
         reservas = file_handler.parser()
         return reservas
 
-    def get_hosts_from_reservas(self):
+    def generate_hosts_from_reservas(self):
         content = ""
 
         for reserva in self.get_reservas():

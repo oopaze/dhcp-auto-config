@@ -19,7 +19,7 @@ def add_reserva():
 
     FileHandler.create_file(RESERVAS_FILEPATH, reservas_as_str)
 
-    hosts = dhcp_handler.get_hosts_from_reservas()
+    hosts = dhcp_handler.generate_hosts_from_reservas()
     dhcp_handler.create_dhcp_conf_file(hosts)
 
     return OUTPUT_SUCCESS_TEMPLATE.format(content="Reserva Adicionada com sucesso")
