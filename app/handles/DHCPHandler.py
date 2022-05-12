@@ -18,7 +18,7 @@ class DHCPHandler:
         file_handler = FileHandler(DHCP_FILEPATH)
         return file_handler.get_content(as_str=as_str)
 
-    def get_reservas_conf(self):
+    def get_reservas(self):
         file_handler = ParserAddress(RESERVAS_FILEPATH)
         reservas = file_handler.parser()
         return reservas
@@ -26,10 +26,17 @@ class DHCPHandler:
     def get_hosts_from_reservas(self):
         content = ""
 
-        for reserva in self.get_reservas_conf():
+        for reserva in self.get_reservas():
             content += self.tranform_reserva_into_host(reserva)
 
         return content
+
+    def tranform_reserva_into_host(self, reserva: AddressContract):
+        return HOST_TEMPLATE.format(
+            name=reserva["computer_name"],
+            mac=reserva["mac_address"],
+            ip=reserva["ip_address"],
+        )
 
     def get_hosts_from_conf(self):
         content = self.get_dhcp_conf(as_str=False)
@@ -52,13 +59,6 @@ class DHCPHandler:
             "mac_address": mac_address,
             "ip_address": ip_address,
         }
-
-    def tranform_reserva_into_host(self, reserva: AddressContract):
-        return HOST_TEMPLATE.format(
-            name=reserva["computer_name"],
-            mac=reserva["mac_address"],
-            ip=reserva["ip_address"],
-        )
 
     def create_dhcp_conf_file(self, content: str):
         requied_dhcp_handler = FileHandler(DHCP_REQUIRED_CONFIG_FILEPATH)
