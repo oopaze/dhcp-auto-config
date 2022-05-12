@@ -12,7 +12,7 @@ def start():
         dhcp_handler.create_backup_file()
 
         print("Gerando novo arquivo de configuração DHCP")
-        hosts = dhcp_handler.get_hosts_from_reservas()
+        hosts = dhcp_handler.get_reservas_from_dhcp_conf()
 
         print("Salvando configuração")
         dhcp_handler.create_dhcp_conf_file(hosts)

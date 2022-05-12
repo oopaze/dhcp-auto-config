@@ -16,7 +16,7 @@ def cron_execution():
     print("Atualizando Reservas")
     dhcp_handler = DHCPHandler()
 
-    reservas = dhcp_handler.get_hosts_from_conf()
+    reservas = dhcp_handler.get_reservas_from_dhcp_conf()
 
     reservas_as_csv = listToCSV(reservas)
 
