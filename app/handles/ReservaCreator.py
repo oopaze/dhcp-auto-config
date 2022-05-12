@@ -7,7 +7,7 @@ class ReservaCreator:
         value = input(f"Digite o {name}: ")
         self.values[key] = value
 
-    def get_fields(self):
+    def get_new_reserva(self):
         is_validated = False
 
         while not (is_validated):

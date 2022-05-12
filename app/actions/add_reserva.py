@@ -10,7 +10,7 @@ def add_reserva():
     reservas_handler = ReservaCreator()
     dhcp_handler = DHCPHandler()
 
-    reserva = reservas_handler.get_fields()
+    reserva = reservas_handler.get_new_reserva()
 
     reservas = dhcp_handler.get_hosts_from_conf()
     reservas.append(reserva)
