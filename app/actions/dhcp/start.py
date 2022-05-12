@@ -18,7 +18,7 @@ def start():
         dhcp_handler.create_dhcp_conf_file(hosts)
 
         print("Startando DHCP")
-        os.system("sudo /etc/init.d/isc-dhcp-server start")
+        os.system("/etc/init.d/isc-dhcp-server start")
     except FileNotFoundError:
         return OUTPUT_ERROR_TEMPLATE.format(
             content="Arquivo de configuração não encontrado"
