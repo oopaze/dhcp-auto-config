@@ -1,4 +1,4 @@
-from app import DHCP_FILEPATH, OUTPUT_SUCCESS_TEMPLATE, RESERVAS_FILEPATH
+from app import OUTPUT_SUCCESS_TEMPLATE, RESERVAS_FILEPATH
 from app.handles.DHCPHandler import DHCPHandler
 
 from app.handles.FileHandler import FileHandler
