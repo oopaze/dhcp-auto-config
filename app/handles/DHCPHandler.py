@@ -1,6 +1,6 @@
 from typing import List
 
-from app import DHCP_FILEPATH, RESERVAS_FILEPATH
+from app import DHCP_FILEPATH, DHCP_REQUIRED_CONFIG_FILEPATH, RESERVAS_FILEPATH
 from app.handles.FileHandler import FileHandler
 from app.handles.ParserHandle import AddressContract, ParserAddress
 from app.utils.get_today_date import get_today_date
@@ -61,7 +61,7 @@ class DHCPHandler:
         )
 
     def create_dhcp_conf_file(self, content: str, filepath: str = None):
-        requied_dhcp_handler = FileHandler('fixtures/required_dhcp.conf')
+        requied_dhcp_handler = FileHandler(DHCP_REQUIRED_CONFIG_FILEPATH)
         required_dhcp_conf = requied_dhcp_handler.get_content(as_str=True)
 
         content = required_dhcp_conf + content
