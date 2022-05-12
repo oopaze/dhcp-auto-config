@@ -1,12 +1,12 @@
+from app import RESERVAS_FILEPATH
 from app.handles.ParserHandle import ParserAddress
 
-FILENAME = 'fixtures/RESERVAS.txt'
 RESERVA_TEMPLATE = '{idx} - Nome={nome} | MAC={mac} | IP={ip}'
 
 
 def show_reservas():
     print('Reservas: ')
-    parser = ParserAddress(FILENAME)
+    parser = ParserAddress(RESERVAS_FILEPATH)
     reservas = parser.parser()
 
     for idx, reserva in enumerate(reservas):

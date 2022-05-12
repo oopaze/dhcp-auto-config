@@ -1,10 +1,7 @@
-from os import environ as env
-
+from app import RESERVAS_FILEPATH
 from app.handles.CSVHandle import listToCSV
 from app.handles.DHCPHandler import DHCPHandler
 from app.handles.FileHandler import FileHandler
-
-RESERVAS_FILEPATH = env.get("RESERVAS_FILEPATH", "fixtures/RESERVAS.txt")
 
 
 def cron_execution():

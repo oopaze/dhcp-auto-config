@@ -1,6 +1,6 @@
-from os import environ as env
 from typing import List
 
+from app import DHCP_FILEPATH, RESERVAS_FILEPATH
 from app.handles.FileHandler import FileHandler
 from app.handles.ParserHandle import AddressContract, ParserAddress
 from app.utils.get_today_date import get_today_date
@@ -14,15 +14,12 @@ host {name} {{
 
 
 class DHCPHandler:
-    DHCP_FILEPATH = env.get("DHCP_FILEPATH", "fixtures/dhcpd.conf")
-    RESERVAS_FILEPATH = env.get("RESERVAS_FILEPATH", "fixtures/RESERVAS.txt")
-
     def get_dhcp_conf(self, as_str: bool = True):
-        file_handler = FileHandler(self.DHCP_FILEPATH)
+        file_handler = FileHandler(DHCP_FILEPATH)
         return file_handler.get_content(as_str=as_str)
 
     def get_reservas_conf(self):
-        file_handler = ParserAddress(self.RESERVAS_FILEPATH)
+        file_handler = ParserAddress(RESERVAS_FILEPATH)
         reservas = file_handler.parser()
         return reservas
 
@@ -63,14 +60,16 @@ class DHCPHandler:
             ip=reserva["ip_address"],
         )
 
-    def create_dhcp_conf_file(self, content: str):
+    def create_dhcp_conf_file(self, content: str, filepath: str = None):
         requied_dhcp_handler = FileHandler('fixtures/required_dhcp.conf')
         required_dhcp_conf = requied_dhcp_handler.get_content(as_str=True)
 
         content = required_dhcp_conf + content
+        if filepath is None:
+            moment = get_today_date()
+            filepath = f"fixtures/dhcp.conf/dhcp-{moment}.conf"
 
-        moment = get_today_date()
-        FileHandler.create_file(f"fixtures/dhcp.conf/dhcp-{moment}.conf", content)
+        FileHandler.create_file(filepath, content)
 
     def create_backup_file(self):
         moment = get_today_date()
