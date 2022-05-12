@@ -1,7 +1,5 @@
 from typing import List, Union
 
-from app.utils.get_today_date import get_today_date
-
 
 class FileHandler:
     READ_MODE = "r"

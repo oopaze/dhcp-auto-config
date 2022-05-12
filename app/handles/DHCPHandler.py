@@ -3,7 +3,7 @@ from typing import List
 from app import DHCP_FILEPATH, DHCP_REQUIRED_CONFIG_FILEPATH, RESERVAS_FILEPATH
 from app.handles.FileHandler import FileHandler
 from app.handles.ParserHandle import AddressContract, ParserAddress
-from app.utils.get_today_date import get_today_date
+from app.utils.get_today_moment import get_moment
 
 HOST_TEMPLATE = """
 host {name} {{
@@ -69,7 +69,7 @@ class DHCPHandler:
         FileHandler.create_file(DHCP_FILEPATH, content)
 
     def create_backup_file(self):
-        moment = get_today_date()
+        moment = get_moment()
         content = self.get_dhcp_conf()
         filename = f"backup-{moment}.conf"
 
