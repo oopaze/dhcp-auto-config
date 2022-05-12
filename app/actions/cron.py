@@ -10,9 +10,8 @@ def cron_execution():
 
     print("Fazendo backup das reservas")
     moment = get_today_date()
-    FileHandler.copy_file(
-        RESERVAS_FILEPATH, f"fixtures/backups/reservas/RESERVA-{moment}.txt"
-    )
+    backup_file_name = f"fixtures/backups/reservas/RESERVA-{moment}.txt"
+    FileHandler.copy_file(RESERVAS_FILEPATH, backup_file_name)
 
     print("Atualizando Reservas")
     dhcp_handler = DHCPHandler()
