@@ -38,16 +38,16 @@ class DHCPHandler:
             ip=reserva["ip_address"],
         )
 
-    def get_reservas_from_dhcp_conf(self):
+    def get_reservas_from_dhcp_conf(self) -> List[AddressContract]:
         content = self.get_dhcp_conf(as_str=False)
-        formated_hosts = []
+        reservas = []
 
         for idx, line in enumerate(content):
             if line.strip().startswith("host"):
                 host = content[idx : idx + 3]
-                formated_hosts.append(self.format_host(host))
+                reservas.append(self.format_host(host))
 
-        return formated_hosts
+        return reservas
 
     def format_host(self, host: List[str]) -> AddressContract:
         computer_name = host[0].split(" ")[1]
