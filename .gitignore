@@ -167,5 +167,5 @@ cython_debug/
 # vscode settings file
 .vscode
 
-fixtures/backups/reservas/RESERVA-*
-fixtures/backups/dhcpd.conf/backup-*
+backups/reservas/*.txt
+backups/dhcpd.conf/*.conf

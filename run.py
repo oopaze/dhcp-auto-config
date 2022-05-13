@@ -3,7 +3,7 @@ from argparse import ArgumentParser
 from app import App
 from app.actions.cron import cron_execution
 
-from app.implementations.menu_option import MenuOption
+from app.implementations.MenuOption import MenuOption
 
 from app.actions.atualizar_faixa_ip import atualizar_faixa_ip
 from app.actions.dhcp.restart import restart

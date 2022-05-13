@@ -1,17 +1,7 @@
-from os import environ as env
 from typing import List
 
-from app.implementations.menu import Menu
-from app.implementations.menu_option import MenuOption
-
-OUTPUT_SUCCESS_TEMPLATE = "\033[92m{content}\033[0m"
-OUTPUT_ERROR_TEMPLATE = "\033[91m{content}\033[0m"
-
-DHCP_FILEPATH = env.get("DHCP_FILEPATH", "fixtures/dhcpd.conf")
-DHCP_REQUIRED_CONFIG_FILEPATH = env.get(
-    "DHCP_REQUIRED_CONFIG_FILEPATH", "fixtures/defaults/dhcp.conf"
-)
-RESERVAS_FILEPATH = env.get("RESERVAS_FILEPATH", "fixtures/RESERVAS.txt")
+from app.implementations.Menu import Menu
+from app.implementations.MenuOption import MenuOption
 
 
 class App:

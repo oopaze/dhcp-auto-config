@@ -1,6 +1,6 @@
 from typing import Callable, List, Union
 
-from app.implementations.menu_option import MenuOption
+from app.implementations.MenuOption import MenuOption
 
 
 class Menu:

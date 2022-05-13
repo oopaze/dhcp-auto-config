@@ -1,4 +1,11 @@
+import os
 from typing import List, Union
+
+from app.utils.get_moment import get_moment
+from app.shared.defaults import (
+    DHCPD_BACKUP_FOLDER,
+    RESERVA_BACKUP_FOLDER,
+)
 
 
 class FileHandler:
@@ -19,15 +26,23 @@ class FileHandler:
         with open(self.filename, self.APPEND_MODE) as file:
             file.write(line)
 
-    def create_file(filepath: str, content):
+    def create_file(cls, filepath: str, content):
         with open(filepath, FileHandler.WRITE_MODE) as file:
             file.write(content)
             file.close
 
-    def copy_file(filepath: str, new_filepath: str):
-        with open(filepath, FileHandler.READ_MODE) as file:
-            with open(new_filepath, FileHandler.WRITE_MODE) as new_file:
-                new_file.write(file.read())
+    def copy_file(cls, filepath: str, new_filepath: str):
+        os.system(f"cat {filepath} > {new_filepath}")
+
+    def create_backup_file(self, backup_filename: str, isReserva: bool = True):
+        moment = get_moment()
+        backup_filepath = (
+            f"{DHCPD_BACKUP_FOLDER}/{moment}-{backup_filename}"
+            if isReserva
+            else f"{RESERVA_BACKUP_FOLDER}/{moment}-{backup_filename}"
+        )
+
+        self.copy_file(self.filename, backup_filepath)
 
     def get_content(self, as_str: bool = False) -> Union[List[str], str]:
         content = None
