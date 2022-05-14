@@ -1,5 +1,4 @@
-DHCP_BASE_CONFIG_FILE = "fixtures/dhcpd-base.conf"
-DHCP_FILEPATH = "dhcpd.conf"
+DHCP_FILEPATH = "/etc/dhcp/dhcpd.conf"
 
 RESERVAS_FILEPATH = "RESERVAS.txt"
 

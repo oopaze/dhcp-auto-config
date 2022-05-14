@@ -1,7 +1,7 @@
 from typing import List, Optional
 from app.handles.FileHandler import FileHandler
 from app.implementations.Parser import Parser
-from app.shared.defaults import DHCP_BASE_CONFIG_FILE, DHCP_FILEPATH
+from app.shared.defaults import DHCP_FILEPATH
 from app.shared.contracts import ReservaContract
 
 
