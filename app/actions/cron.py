@@ -7,10 +7,10 @@ def cron_execution():
     try:
         dhcp_handler = DHCPHandler()
         reservas = dhcp_handler.get_hosts(asReserva=True)
+        reservas_handler = ReservaHandler()
+        reservas_handler.update_reservas_file(reservas)
+        print(
+            OUTPUT_SUCCESS_TEMPLATE.format(content="Reservas atualizadas com sucesso")
+        )
     except FileNotFoundError:
         print(OUTPUT_ERROR_TEMPLATE.format(content="Arquivo dhcpd.conf não encontrado"))
-        return
-
-    reservas_handler = ReservaHandler()
-    reservas_handler.update_reservas_file(reservas)
-    print(OUTPUT_SUCCESS_TEMPLATE.format(content="Reservas atualizadas com sucesso"))

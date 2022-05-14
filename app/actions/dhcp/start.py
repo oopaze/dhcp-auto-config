@@ -18,7 +18,7 @@ def start():
         hosts = parser.transform_reservas_into_host(reservas)
 
         print("Gerando backup do arquivo dhcpd.conf")
-        print("Criando novo arquivo dhcp")
+        print("Criando novo arquivo dhcpd.conf")
         dhcp_handler.update_dhcpd_file(hosts)
 
         print("Iniciando DHCP server")

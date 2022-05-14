@@ -1,11 +1,9 @@
-from os import environ as env
+DHCP_BASE_CONFIG_FILE = "fixtures/dhcpd-base.conf"
+DHCP_FILEPATH = "dhcpd.conf"
 
-DHCP_BASE_CONFIG_FILE = env.get("DHCP_BASE_CONFIG_FILE", "fixtures/dhcpd-base.conf")
-DHCP_FILEPATH = env.get("DHCP_FILEPATH", "dhcpd.conf")
+RESERVAS_FILEPATH = "RESERVAS.txt"
 
-RESERVAS_FILEPATH = env.get("RESERVAS_FILEPATH", "RESERVAS.txt")
-
-BACKUP_FOLDER_PATH = env.get("BACKUPS_FOLDER_PATH", "backups")
+BACKUP_FOLDER_PATH = "backups"
 RESERVA_BACKUP_FOLDER = f"{BACKUP_FOLDER_PATH}/reservas"
 DHCPD_BACKUP_FOLDER = f"{BACKUP_FOLDER_PATH}/dhcpd.conf"
 
