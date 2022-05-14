@@ -23,4 +23,5 @@ subnet {ip} netmask {mask} {{
   option routers {gateway};
   option domain-name-servers {dns};
 }}
+
 """
