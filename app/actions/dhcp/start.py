@@ -12,6 +12,7 @@ def start():
     try:
         dhcp_handler = DHCPHandler()
         dhcp_handler.generate_base_config_file()
+        print(dhcp_handler.base_config)
 
         reservas_handler = ReservaHandler()
         reservas = reservas_handler.get_reservas()

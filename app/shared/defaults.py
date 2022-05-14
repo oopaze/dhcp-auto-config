@@ -16,8 +16,9 @@ host {name} {{
   hardware ethernet {MAC};
   fixed-address {IP};
 }}
+
 """
-SUBNET_TEMPLATE = """
+SUBNET_TEMPLATE = """\n
 subnet {ip} netmask {mask} {{
   range {faixa};
   option routers {gateway};

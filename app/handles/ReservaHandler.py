@@ -8,7 +8,9 @@ from app.utils.csv import dict_to_csv, list_to_csv
 
 class ReservaHandler:
     _filepath = RESERVAS_FILEPATH
-    reservas: List[ReservaContract] = []
+
+    def __init__(self):
+        self.reservas: List[ReservaContract] = []
 
     @property
     def filepath(self) -> str:

@@ -2,7 +2,6 @@ from argparse import ArgumentParser
 
 from app import App
 from app.actions.cron import cron_execution
-from app.handles.DHCPHandler import DHCPHandler
 
 from app.implementations.MenuOption import MenuOption
 

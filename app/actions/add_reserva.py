@@ -6,7 +6,7 @@ from app.implementations.ReservaForm import ReservaForm
 def add_reserva():
     try:
         reserva_creator = ReservaForm()
-        reserva = reserva_creator.generate_reserva()
+        reserva = reserva_creator.generate_data()
 
         reserva_handler = ReservaHandler()
         reserva_handler.add_reserva(reserva)

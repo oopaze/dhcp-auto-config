@@ -15,7 +15,7 @@ def atualizar_faixa_ip():
         dhcp_handle = DHCPHandler()
         dhcp_handle.generate_base_config_file()
 
-        hosts = dhcp_handle.get_hosts()
+        hosts = "".join(dhcp_handle.get_hosts())
         dhcp_handle.update_dhcpd_file(hosts, subnet=dhcp_subnet)
     except FileNotFoundError:
         return OUTPUT_ERROR_TEMPLATE.format(content="Arquivo dhcpd.conf não encontrado")
