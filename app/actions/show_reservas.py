@@ -9,7 +9,7 @@ from app.shared.defaults import (
 def show_reservas():
     try:
         reserva_handler = ReservaHandler()
-        reservas = reserva_handler.get_reservas_from_file()
+        reservas = reserva_handler.get_reservas()
     except FileNotFoundError:
         return OUTPUT_ERROR_TEMPLATE.format(
             content="Arquivo de reservas não encontrado"

@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 
 from app import App
 from app.actions.cron import cron_execution
+from app.handles.DHCPHandler import DHCPHandler
 
 from app.implementations.MenuOption import MenuOption
 
@@ -12,14 +13,22 @@ from app.actions.dhcp.stop import stop
 from app.actions.add_reserva import add_reserva
 from app.actions.show_reservas import show_reservas
 
-menu_options = [
-    MenuOption('Atualizar faixa de ip do DHCP', atualizar_faixa_ip),
-    MenuOption('Acrescentar máquina com reserva de IP', add_reserva),
-    MenuOption('Listar as reservas já existentes', show_reservas),
-    MenuOption('Start', start),
-    MenuOption('Stop', stop),
-    MenuOption('Restart', restart),
-]
+
+def main_execution():
+    menu_options = [
+        MenuOption('Atualizar faixa de ip do DHCP', atualizar_faixa_ip),
+        MenuOption('Acrescentar máquina com reserva de IP', add_reserva),
+        MenuOption('Listar as reservas já existentes', show_reservas),
+        MenuOption('Start', start),
+        MenuOption('Stop', stop),
+        MenuOption('Restart', restart),
+    ]
+
+    app = App(menu_options)
+    app.run()
+
+
+DHCPHandler().generate_base_config_file()
 
 if __name__ == '__main__':
     parser = ArgumentParser(description='DHCP auto config')
@@ -29,5 +38,4 @@ if __name__ == '__main__':
     if args.cron:
         cron_execution()
     else:
-        app = App(menu_options)
-        app.run()
+        main_execution()

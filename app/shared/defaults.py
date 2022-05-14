@@ -1,7 +1,7 @@
 from os import environ as env
 
-DHCP_BASE_CONFIG_FILE = env.get("DHCP_BASE_CONFIG_FILE", "fixtures/defaults/dhcp.conf")
-DHCP_FILEPATH = env.get("DHCP_FILEPATH", "fixtures/dhcpd.conf")
+DHCP_BASE_CONFIG_FILE = env.get("DHCP_BASE_CONFIG_FILE", "fixtures/dhcpd-base.conf")
+DHCP_FILEPATH = env.get("DHCP_FILEPATH", "dhcpd.conf")
 
 RESERVAS_FILEPATH = env.get("RESERVAS_FILEPATH", "RESERVAS.txt")
 

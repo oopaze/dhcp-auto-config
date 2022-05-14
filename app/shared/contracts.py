@@ -14,7 +14,3 @@ class ReservaContract(TypedDict):
     name: str
     MAC: str
     IP: str
-
-
-class HostContract(ReservaContract):
-    ...

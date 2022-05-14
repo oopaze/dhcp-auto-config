@@ -38,9 +38,9 @@ class FileHandler:
     def create_backup_file(self, backup_filename: str, isReserva: bool = True):
         moment = get_moment()
         backup_filepath = (
-            f"{DHCPD_BACKUP_FOLDER}/{moment}-{backup_filename}"
+            f"{RESERVA_BACKUP_FOLDER}/{moment}-{backup_filename}"
             if isReserva
-            else f"{RESERVA_BACKUP_FOLDER}/{moment}-{backup_filename}"
+            else f"{DHCPD_BACKUP_FOLDER}/{moment}-{backup_filename}"
         )
 
         self.copy_file(self.filename, backup_filepath)

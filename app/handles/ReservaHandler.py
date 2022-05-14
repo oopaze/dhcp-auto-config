@@ -18,7 +18,7 @@ class ReservaHandler:
     def buffer(self):
         return FileHandler(self.filepath)
 
-    def get_reservas_from_file(self) -> List[ReservaContract]:
+    def get_reservas(self) -> List[ReservaContract]:
         for reserva in self.buffer.get_content():
             name, mac, ip = reserva.split(",")
             ip = ip.replace('\n', '')

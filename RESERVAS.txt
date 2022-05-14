@@ -1,6 +1,1 @@
-Secretaria,00:05:84:EE:2B:45,192.168.0.2
-Tesouraria,00:05:84:4E:CB:47,192.168.0.3
-Producao,00:05:84:2B:2A:A4,192.168.0.4
-Guarita,00:05:84:EF:12:20,192.168.0.49
-Foo,01,02
-FOo,020,042
+fantasia.fugue.com,08:00:07:26:c0:a5,fantasia
