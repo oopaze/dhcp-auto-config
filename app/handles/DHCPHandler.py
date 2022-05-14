@@ -55,6 +55,9 @@ class DHCPHandler:
         for host in hosts:
             content = content.replace(host, "")
 
+        while content.endswith("\n\n"):
+            content = content[0:-1]
+        
         self.base_config = content
 
     def update_dhcpd_file(self, hosts: str, asReservas: bool = False, subnet: str = ""):
