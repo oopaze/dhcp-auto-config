@@ -57,11 +57,11 @@ class DHCPHandler:
 
         self.base_config = content
 
-    def update_dhcpd_file(self, hosts: str, asReservas: bool = False):
+    def update_dhcpd_file(self, hosts: str, asReservas: bool = False, subnet: str = ""):
         self.buffer.create_backup_file("dhcpd.conf", isReserva=False)
 
         if asReservas:
             hosts = self.parser.transform_reservas_into_host(hosts)
 
-        content = self.base_config + hosts
+        content = self.base_config + subnet + hosts
         self.buffer.create_file(filepath=DHCP_FILEPATH, content=content)

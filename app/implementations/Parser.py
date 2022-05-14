@@ -1,6 +1,7 @@
 from typing import List
+from app.implementations.SubnetForm import SubnetForm
 from app.shared.contracts import ReservaContract
-from app.shared.defaults import HOST_TEMPLATE
+from app.shared.defaults import HOST_TEMPLATE, SUBNET_TEMPLATE
 
 
 class Parser:
@@ -23,3 +24,6 @@ class Parser:
             hosts += self.transform_reserva_into_host(reserva)
 
         return hosts
+
+    def transform_subnet_in_dhcp(self, subnet: SubnetForm):
+        return SUBNET_TEMPLATE.format(**subnet)

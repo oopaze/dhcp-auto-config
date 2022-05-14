@@ -1,11 +1,11 @@
 from app.shared.defaults import OUTPUT_ERROR_TEMPLATE, OUTPUT_SUCCESS_TEMPLATE
 from app.handles.ReservaHandler import ReservaHandler
-from app.implementations.ReservaCreator import ReservaCreator
+from app.implementations.ReservaForm import ReservaForm
 
 
 def add_reserva():
     try:
-        reserva_creator = ReservaCreator()
+        reserva_creator = ReservaForm()
         reserva = reserva_creator.generate_reserva()
 
         reserva_handler = ReservaHandler()

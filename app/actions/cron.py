@@ -7,6 +7,7 @@ def cron_execution():
     try:
         dhcp_handler = DHCPHandler()
         reservas = dhcp_handler.get_hosts(asReserva=True)
+
         reservas_handler = ReservaHandler()
         reservas_handler.update_reservas_file(reservas)
         print(
