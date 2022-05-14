@@ -1,12 +1,5 @@
-from typing import TypedDict
-
+from app.shared.contracts import ReservaContract
 from app.shared.defaults import RESERVA_TEMPLATE
-
-
-class ReservaContract(TypedDict):
-    name: str
-    MAC: str
-    IP: str
 
 
 class ReservaCreator:

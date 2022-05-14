@@ -1,7 +1,7 @@
 from typing import List
 
 from app.handles.FileHandler import FileHandler
-from app.implementations.ReservaCreator import ReservaContract
+from app.shared.contracts import ReservaContract
 from app.shared.defaults import RESERVAS_FILEPATH
 from app.utils.csv import dict_to_csv, list_to_csv
 
@@ -21,7 +21,8 @@ class ReservaHandler:
     def get_reservas_from_file(self) -> List[ReservaContract]:
         for reserva in self.buffer.get_content():
             name, mac, ip = reserva.split(",")
-            self.reservas.append({'IP': ip.replace('\n', ''), 'MAC': mac, 'name': name})
+            ip = ip.replace('\n', '')
+            self.reservas.append({'IP': ip, 'MAC': mac, 'name': name})
 
         return self.reservas
 
