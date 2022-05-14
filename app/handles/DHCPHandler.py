@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from app.handles.FileHandler import FileHandler
 from app.implementations.Parser import Parser
 from app.shared.defaults import DHCP_BASE_CONFIG_FILE, DHCP_FILEPATH
@@ -8,6 +8,7 @@ from app.shared.contracts import ReservaContract
 class DHCPHandler:
     _filepath = DHCP_FILEPATH
     _parser = Parser()
+    base_config = ""
 
     @property
     def filepath(self):
@@ -54,4 +55,13 @@ class DHCPHandler:
         for host in hosts:
             content = content.replace(host, "")
 
-        self.buffer.create_file(DHCP_BASE_CONFIG_FILE, content)
+        self.base_config = content
+
+    def update_dhcpd_file(self, hosts: str, asReservas: bool = False):
+        self.buffer.create_backup_file("dhcpd.conf", isReserva=False)
+
+        if asReservas:
+            hosts = self.parser.transform_reservas_into_host(hosts)
+
+        content = self.base_config + hosts
+        self.buffer.create_file(filepath=DHCP_FILEPATH, content=content)

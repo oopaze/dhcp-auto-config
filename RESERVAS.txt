@@ -1,1 +1,1 @@
-fantasia.fugue.com,08:00:07:26:c0:a5,fantasia
+Foo,01,2
