@@ -26,11 +26,12 @@ class FileHandler:
         with open(self.filename, self.APPEND_MODE) as file:
             file.write(line)
 
+    @classmethod
     def create_file(cls, filepath: str, content):
         with open(filepath, FileHandler.WRITE_MODE) as file:
             file.write(content)
-            file.close
 
+    @classmethod
     def copy_file(cls, filepath: str, new_filepath: str):
         os.system(f"cat {filepath} > {new_filepath}")
 

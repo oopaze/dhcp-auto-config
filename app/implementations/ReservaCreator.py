@@ -1,5 +1,6 @@
 from typing import TypedDict
-from __future__ import annotations
+
+from app.shared.defaults import RESERVA_TEMPLATE
 
 
 class ReservaContract(TypedDict):
@@ -10,8 +11,6 @@ class ReservaContract(TypedDict):
 
 class ReservaCreator:
     values: ReservaContract = {"name": None, "MAC": None, "IP": None}
-
-    RESERVA_TEMPLATE = 'Nome={nome} | MAC={MAC} | IP={IP}'
 
     def get_field(self, name: str, key: str):
         value = input(f"Digite o {name}: ")
@@ -31,7 +30,7 @@ class ReservaCreator:
         return self.values
 
     def confirm_fields(self) -> bool:
-        reserva = self.RESERVA_TEMPLATE.format(**self.values)
+        reserva = RESERVA_TEMPLATE.format(**self.values)
         print(f"\nConfirma Reserva?\n{reserva}")
 
         is_confirmed = input("S/N: ").lower() == "s"

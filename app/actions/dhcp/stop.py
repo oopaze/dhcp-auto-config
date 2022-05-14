@@ -1,6 +1,6 @@
 import os
 
-from app import OUTPUT_SUCCESS_TEMPLATE
+from app.shared.defaults import OUTPUT_SUCCESS_TEMPLATE
 
 
 def stop():
