@@ -28,8 +28,6 @@ def main_execution():
     app.run()
 
 
-DHCPHandler().generate_base_config_file()
-
 if __name__ == '__main__':
     parser = ArgumentParser(description='DHCP auto config')
     parser.add_argument("--cron", type=bool, default=False)
